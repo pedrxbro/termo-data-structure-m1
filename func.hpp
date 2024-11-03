@@ -1,7 +1,7 @@
 #ifndef FUNC_HPP
 #define FUNC_HPP
 
-// DefiniÃ§Ãµes de cores
+// Definições de cores
 #define VERDE "\033[32m"
 #define AMARELO "\033[33m"
 #define CINZA "\033[37m"
@@ -20,7 +20,7 @@ struct LDE {
     No *fim;
 };
 
-//FunÃ§Ãµes para LDE
+//Funções para LDE
 void inicializarLDE(LDE &lista);
 bool inserirFinalLDE(LDE &lista, const std::string &valor);
 bool retirarLDE(LDE &lista, const std::string &valor);
@@ -29,22 +29,22 @@ int contadorLDE(LDE &lista);
 No* elementoPosicaoLDE(LDE &lista, int pos);
 void liberarLDE(LDE &lista);
 
-//FunÃ§Ãµes auxiliares
+//Funções auxiliares
 void clear();
 void limparLinha();
 
-//FunÃ§Ãµes do jogo
+//Funções do jogo
 void menu();
 void menuJogar();
 void jogarNovamente();
 void jogarModo(int modo);
 
-//FunÃ§Ãµes termo
+//Funções termo
 void coletarEntrada(LDE &lista);
 void converterParaChar(LDE &lista, const std::string &entrada);
 bool compararListas(LDE &listaPalavra, LDE &listaEntrada);
 
-//FunÃ§Ãµes palavras
+//Funções palavras
 std::string selecionarPalavra();
 std::string selecionarPalavraDiferente(const LDE &palavrasEscolhidas);
 void mostrarPalavraVerde(LDE &listaPalavra);

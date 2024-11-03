@@ -40,24 +40,24 @@ No * pesquisarLDE(LDE &lista, string valor){
 }
 bool retirarLDE(LDE &lista, const std::string &valor) {
     No *aux = pesquisarLDE(lista, valor);
-    if (aux == nullptr) return false; // N√£o encontrou o valor
+    if (aux == nullptr) return false; // N„o encontrou o valor
 
     //Caso a lista esteja vazia
     if (aux == lista.comeco && aux == lista.fim) {
         lista.comeco = nullptr;
         lista.fim = nullptr;
     }
-    //Caso o n√≥ a ser removido seja o in√≠cio da lista
+    //Caso o nÛ a ser removido seja o inÌcio da lista
     else if (aux == lista.comeco) {
         lista.comeco = aux->eloP;
         lista.comeco->eloA = nullptr;
     }
-    //Caso o n√≥ a ser removido seja o fim da lista
+    //Caso o nÛ a ser removido seja o fim da lista
     else if (aux == lista.fim) {
         lista.fim = aux->eloA;
         lista.fim->eloP = nullptr;
     }
-    //Caso o n√≥ a ser removido esteja no meio da lista
+    //Caso o nÛ a ser removido esteja no meio da lista
     else {
         No *ant = aux->eloA;
         No *prox = aux->eloP;
@@ -71,7 +71,7 @@ bool retirarLDE(LDE &lista, const std::string &valor) {
     return true;
 }
 
-//Conta o n√∫mero de n√≥s da lista
+//Conta o n˙mero de nÛs da lista
 int contadorLDE(LDE &lista) {
 	No *aux = lista.comeco;
 	int contador = 0;
@@ -84,7 +84,7 @@ int contadorLDE(LDE &lista) {
 	return contador;
 }
 
-//Libera a mem√≥ria dos n√≥s da lista.
+//Libera a memÛria dos nÛs da lista.
 void liberarLDE(LDE &lista) {
 	No *aux = lista.comeco;
 	No *aux2;
@@ -107,7 +107,7 @@ void limparLinha() {
 	cout << "\033[K";  // Limpa a linha
 }
 
-//Fun√ß√£o para selecionar palavra aleat√≥ria
+//FunÁ„o para selecionar palavra aleatÛria
 std::string selecionarPalavra() {
 	LDE palavras;
 	inicializarLDE(palavras);
@@ -126,7 +126,7 @@ std::string selecionarPalavra() {
 
 	arquivo.close();
 
-	//Verifica se a lista est√° preenchida.
+	//Verifica se a lista est· preenchida.
 	int numPalavras = contadorLDE(palavras);
 	if (numPalavras == 0) {
 		cout << "Nenhuma palavra encontrada no arquivo." << endl;
@@ -136,16 +136,16 @@ std::string selecionarPalavra() {
 	//Inicializa a semente baseada no tempo
 	srand(static_cast<unsigned int>(time(nullptr)));
 
-	//Gera um n√∫mero aleat√≥rio entre 1 e numPalavras
+	//Gera um n˙mero aleatÛrio entre 1 e numPalavras
 	int pos = rand() % numPalavras + 1;
 
-	//Obt√©m a palavra na posi√ß√£o aleat√≥ria.
+	//ObtÈm a palavra na posiÁ„o aleatÛria.
 	return elementoPosicaoLDE(palavras, pos)->info;
 }
-//Retorna o n√≥ na posi√ß√£o especificada
+//Retorna o nÛ na posiÁ„o especificada
 No* elementoPosicaoLDE(LDE &lista, int pos) {
 	No *aux = lista.comeco;
-	int contador = 1; //Por conta do n√∫mero aleat√≥rio come√ßar gerar em 1. 
+	int contador = 1; //Por conta do n˙mero aleatÛrio comeÁar gerar em 1. 
 
 	while (aux != nullptr && contador < pos) {
 		aux = aux->eloP;
@@ -161,14 +161,14 @@ void separarCaracteres(LDE &lista, const string &entrada) {
 	}
 }
 
-//Coleta a entrada do usu√°rio e adiciona na lista
+//Coleta a entrada do usu·rio e adiciona na lista
 void coletarEntrada(LDE &lista) {
 	string entrada;
 	cin >> entrada;
 
 	if (entrada.length() != 5) {
 		limparLinha();
-		cout << "Entrada inv√°lida! A palavra deve ter 5 letras." << endl;
+		cout << "Entrada inv·lida! A palavra deve ter 5 letras." << endl;
 		coletarEntrada(lista);
 		limparLinha();
 	} else {
@@ -195,7 +195,7 @@ bool compararListas(LDE &listaPalavra, LDE &listaEntrada) {
 			letrasUsadas[i] = true;
 			letrasVerdes[i] = true;
 		} else {
-			acertouTudo = false;  //Se alguma letra estiver errada, o jogador ainda n√£o acertou tudo
+			acertouTudo = false;  //Se alguma letra estiver errada, o jogador ainda n„o acertou tudo
 		}
 		auxPalavra = auxPalavra->eloP;
 		auxEntrada = auxEntrada->eloP;
@@ -209,7 +209,7 @@ bool compararListas(LDE &listaPalavra, LDE &listaEntrada) {
 
 	//Percorre a segunda vez, letras amarelas e erradas
 	while (auxPalavra != nullptr && auxEntrada != nullptr) {
-	    //Se entrou aqui, essa letra n√£o ser√° mais testada
+	    //Se entrou aqui, essa letra n„o ser· mais testada
 		if (letrasVerdes[i]) {
 			cout << VERDE << auxEntrada->info << RESETAR_COR;  //Verde
 		} else {
@@ -242,10 +242,10 @@ string selecionarPalavraDiferente(const LDE &palavrasEscolhidas) {
 	bool palavraUnica;
 
 	do {
-		novaPalavra = selecionarPalavra();  //Seleciona uma palavra aleat√≥ria
+		novaPalavra = selecionarPalavra();  //Seleciona uma palavra aleatÛria
 		palavraUnica = true;
 
-		//Verifica se a nova palavra j√° foi escolhida
+		//Verifica se a nova palavra j· foi escolhida
 		No *aux = palavrasEscolhidas.comeco;
 		while (aux != nullptr) {
 			if (aux->info == novaPalavra) {
@@ -259,7 +259,7 @@ string selecionarPalavraDiferente(const LDE &palavrasEscolhidas) {
 	return novaPalavra;
 }
 
-//Fun√ß√£o para mostrar a palavra toda verde (quando j√° foi acertada)
+//FunÁ„o para mostrar a palavra toda verde (quando j· foi acertada)
 void mostrarPalavraVerde(LDE &listaPalavra) {
 	No *aux = listaPalavra.comeco;
 	while (aux != nullptr) {
@@ -277,7 +277,7 @@ void inserirPalavra() {
 
     //Verifica se a palavra tem exatamente 5 letras
     if (novaPalavra.length() == 5) {
-        //Adiciona a palavra √† lista
+        //Adiciona a palavra ‡ lista
         inserirFinalLDE(listaPalavras, novaPalavra);
         cout << "Palavra inserida com sucesso!" << endl;
 
@@ -298,7 +298,7 @@ void inserirPalavra() {
 }
 
 
-//Fun√ß√£o para imprimir todas as palavras com √≠ndices
+//FunÁ„o para imprimir todas as palavras com Ìndices
 void listarPalavrasComIndices() {
     ifstream arquivo("palavras.txt");
     if (!arquivo.is_open()) {
@@ -326,16 +326,16 @@ void listarPalavrasComIndices() {
     liberarLDE(listaPalavras);
 }
 
-//Fun√ß√£o para remover uma palavra por √≠ndice
+//FunÁ„o para remover uma palavra por Ìndice
 void removerPalavra() {
     listarPalavrasComIndices();
 
     int indiceParaRemover;
-    cout << "Digite o √≠ndice da palavra que deseja remover: ";
+    cout << "Digite o Ìndice da palavra que deseja remover: ";
     cin >> indiceParaRemover;
 
     if (indiceParaRemover <= 0) {
-        cout << "√çndice inv√°lido!" << endl;
+        cout << "Õndice inv·lido!" << endl;
         return;
     }
 
@@ -355,15 +355,15 @@ void removerPalavra() {
     }
     arquivo.close();
 
-    //Encontrar e remover o n√≥ com o √≠ndice especificado
+    //Encontrar e remover o nÛ com o Ìndice especificado
     No* noParaRemover = elementoPosicaoLDE(listaPalavras, indiceParaRemover);
     if (noParaRemover == nullptr) {
-        cout << "√çndice fora do intervalo!" << endl;
+        cout << "Õndice fora do intervalo!" << endl;
         liberarLDE(listaPalavras);
         return;
     }
 
-    //Remove o n√≥ da lista
+    //Remove o nÛ da lista
     retirarLDE(listaPalavras, noParaRemover->info);
 
     //Reescrever o arquivo sem a palavra removida
@@ -403,7 +403,7 @@ void jogarNovamente() {
 	}
 }
 
-//Fun√ß√£o para exibir o menu
+//FunÁ„o para exibir o menu
 void menu() {
 	int escolha;
     do {
@@ -412,7 +412,7 @@ void menu() {
         cout << "2. Inserir palavra" << endl;
         cout << "3. Remover palavra" << endl;
         cout << "4. Sair" << endl;
-        cout << "Escolha uma op√ß√£o: ";
+        cout << "Escolha uma opÁ„o: ";
         cin >> escolha;
         clear();
 
@@ -430,7 +430,7 @@ void menu() {
                 cout << "Saindo do jogo..." << endl;
                 break;
             default:
-                cout << "Op√ß√£o inv√°lida!" << endl;
+                cout << "OpÁ„o inv·lida!" << endl;
                 break;
         }
     } while (escolha != 4);
@@ -457,7 +457,7 @@ void menuJogar() {
         break;
     }
     else {
-        cout << "Op√ß√£o inv√°lida! Tente novamente." << endl;
+        cout << "OpÁ„o inv·lida! Tente novamente." << endl;
     }
 	} while (escolha != 5);
 }
@@ -466,7 +466,7 @@ void jogarModo(int modo) {
     int tentativas;
     string titulo;
 
-    //Inicializa o n√∫mero de tentativas e o t√≠tulo do jogo baseado no modo
+    //Inicializa o n˙mero de tentativas e o tÌtulo do jogo baseado no modo
     switch (modo) {
         case 1: 
             tentativas = 6;
@@ -485,17 +485,17 @@ void jogarModo(int modo) {
             titulo = "=-=-=-=-=- QUARTETO -=-=-=-=-=-";
             break;
         default:
-            cout << "Modo inv√°lido!" << endl;
+            cout << "Modo inv·lido!" << endl;
             return;
     }
 
     LDE palavrasEscolhidas;
     inicializarLDE(palavrasEscolhidas);
 
-    //Cria arrays din√¢micos para armazenar as palavras e as listas associadas
+    //Cria arrays din‚micos para armazenar as palavras e as listas associadas
     string* palavras = new string[modo];       //Armazena as palavras selecionadas
     LDE* listaPalavras = new LDE[modo];        //Armazena as LDE para cada palavra
-    bool* acertou = new bool[modo];            //Armazena o estado de cada palavra (acertada ou n√£o)
+    bool* acertou = new bool[modo];            //Armazena o estado de cada palavra (acertada ou n„o)
 
     //Inicializa as listas e os estados
     for (int i = 0; i < modo; i++) {
@@ -528,7 +528,7 @@ void jogarModo(int modo) {
         coletarEntrada(listaEntrada);
         limparLinha();
         
-        //Come√ßa com todas certas, conforme entrada (errada) vai atualizando o estado para false.
+        //ComeÁa com todas certas, conforme entrada (errada) vai atualizando o estado para false.
         bool todasAcertadas = true;
 
         for (int i = 0; i < modo; i++) {
@@ -550,12 +550,12 @@ void jogarModo(int modo) {
         cout << endl;
 
         if (todasAcertadas) {
-            cout << "Parab√©ns! Voc√™ acertou todas as palavras!" << endl;
+            cout << "ParabÈns! VocÍ acertou todas as palavras!" << endl;
             break;
         } else {
             tentativas--;
             if (tentativas == 0) {
-                cout << "Voc√™ perdeu! As palavras eram: ";
+                cout << "VocÍ perdeu! As palavras eram: ";
                 for (int i = 0; i < modo; i++) {
                     cout << palavras[i];
                     if (i < modo - 1) {
@@ -570,7 +570,7 @@ void jogarModo(int modo) {
         inicializarLDE(listaEntrada);
     }
 
-    //Libera mem√≥ria e recursos
+    //Libera memÛria e recursos
     for (int i = 0; i < modo; i++) {
         liberarLDE(listaPalavras[i]);
     }
@@ -582,5 +582,5 @@ void jogarModo(int modo) {
 
     liberarLDE(listaEntrada);
 
-    jogarNovamente(); //Fun√ß√£o para jogar novamente
+    jogarNovamente(); //FunÁ„o para jogar novamente
 }
